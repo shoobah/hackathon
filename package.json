@@ -1,0 +1,49 @@
+{
+  "name": "redbadger-hackathon",
+  "version": "0.0.1",
+  "description": "React-Europe hackathon challenge",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://shoobah@github.com/shoobah/hackathon.git"
+  },
+  "keywords": [
+    "hackathon",
+    "redbadger",
+    "meetup"
+  ],
+  "author": "Anders Sjöberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shoobah/hackathon/issues"
+  },
+  "homepage": "https://github.com/shoobah/hackathon#readme",
+  "dependencies": {
+    "flux": "^2.0.3",
+    "react": "^0.13.3"
+  },
+  "devDependencies": {
+    "babel": "^5.6.14",
+    "babel-core": "^5.6.14",
+    "babel-loader": "^5.2.2",
+    "file-loader": "^0.8.4",
+    "gulp": "^3.9.0",
+    "gulp-util": "^3.0.6",
+    "html-webpack-plugin": "^1.5.2",
+    "image-loader": "0.0.1",
+    "json-loader": "^0.5.2",
+    "node-libs-browser": "^0.5.2",
+    "node-sass": "^3.2.0",
+    "react-hot-loader": "^1.2.7",
+    "sass-loader": "^1.0.2",
+    "style-loader": "^0.12.3",
+    "url-loader": "^0.5.6",
+    "vinyl-ftp": "^0.4.1",
+    "webpack": "^1.9.12",
+    "webpack-dev-server": "^1.9.0"
+  }
+}
