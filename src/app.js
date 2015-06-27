@@ -1,10 +1,14 @@
-import React    from  'react';
+import React     from  'react';
+import MeetupApp from  './components/meetupapp';
+import tapPlugin from 'react-tap-event-plugin';
+
+tapPlugin();
 
 class App extends React.Component {
     render() {
         return (
             <div>
-                Hej!
+                <MeetupApp />
             </div>
         );
     }

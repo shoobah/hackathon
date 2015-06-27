@@ -47,9 +47,9 @@ gulp.task('webpack:build', function(callback) {
 });
 
 // Deploy to azure
-gulp.task('deploy', ['webpack:build', 'azure:deploy'])
+gulp.task('deploy', ['azure:deploy'])
 
-gulp.task('azure:deploy', function(err, stats) {
+gulp.task('azure:deploy', ['webpack:build'], function(err, stats) {
     var conn = ftp.create({
         host: 'waws-prod-db3-007.ftp.azurewebsites.windows.net',
         user:     'shoobhack\\shoobahguruftp',
@@ -59,10 +59,10 @@ gulp.task('azure:deploy', function(err, stats) {
     });
 
     var globs = [
-        'dist/**'
+        'prod/**'
     ]
 
-    return gulp.src(globs, {base: './dist/', buffer: false})
+    return gulp.src(globs, {base: './prod/', buffer: false})
         .pipe(conn.newer('/site/wwwroot')) // only upload newer files
         .pipe(conn.dest('/site/wwwroot'));
 })
