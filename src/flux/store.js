@@ -35,6 +35,9 @@ Dispatcher.register((payload) => {
         case Constants.FETCH:
             theAppState.meetups = data;
             break;
+        case Constants.LOGIN:
+            theAppState.token = data;
+            break;
     }
     _Store.emitChange();
 });

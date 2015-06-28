@@ -1,4 +1,4 @@
 export default {
     FETCH : 'FETCH',
-    // WEATHER : 'WEATHER'
+    LOGIN : 'LOGIN'
 }
