@@ -7,9 +7,9 @@ export default class ListMeetups extends React.Component {
 
 render() {
     let meetups = this.props.appstate.meetups;
-    // if (!meetups) {
-    //     return null;
-    // }
+    if (!meetups) {
+        return null;
+    }
     console.log('ListMeetups - meetups', meetups);
     let items = [];
     for (var item of meetups.results) {
