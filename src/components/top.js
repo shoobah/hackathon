@@ -34,14 +34,9 @@ export default class Top extends React.Component {
             text    : 'Project'
         },
         {
-            text     : 'Disabled',
-            disabled : true
-        },
-        {
-            type     : this.MenuItem.Types.LINK,
-            payload  : 'https://www.google.com',
-            text     : 'Disabled Link',
-            disabled : true
+            type: this.MenuItem.Types.LINK,
+            text: 'Sunet',
+            payload: 'http://www.sunet.se'
         },
     ];
     let meetups = this.props.appstate.meetups;
