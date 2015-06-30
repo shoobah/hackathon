@@ -1,19 +1,21 @@
 import React from 'react';
-import mui from 'material-ui';
+import Mui from 'material-ui';
 import Action from '../flux/actions'
 import Moment from 'moment';
-
-let AppBar = mui.AppBar;
 
 Moment.locale('sv');
 
 export default class Top extends React.Component {
   constructor(props) {
       super(props);
+      this.AppBar = Mui.AppBar;
+      this.LeftNav = Mui.LeftNav;
+      this.MenuItem = Mui.MenuItem;
   }
 
   handleLeftTap(e) {
-      Action.reactmeetups(this.props.appstate.token, this.props.appstate.position)
+      //Action.reactmeetups(this.props.appstate.token, this.props.appstate.position);
+      this.refs.theLeftMenu.toggle();
   }
 
   render() {
@@ -21,6 +23,27 @@ export default class Top extends React.Component {
         width:'100%',
         height: '64px'
     }
+    let menuItems = [
+        {route: 'get-started', text: 'Get Started'},
+        {route: 'customization', text: 'Customization'},
+        {route: 'components', text: 'Components'},
+        {type: this.MenuItem.Types.SUBHEADER, text: 'Resources'},
+        {
+            type    : this.MenuItem.Types.LINK,
+            payload : 'https://github.com/shoobah/hackathon',
+            text    : 'Project'
+        },
+        {
+            text     : 'Disabled',
+            disabled : true
+        },
+        {
+            type     : this.MenuItem.Types.LINK,
+            payload  : 'https://www.google.com',
+            text     : 'Disabled Link',
+            disabled : true
+        },
+    ];
     let meetups = this.props.appstate.meetups;
     let heading = 'Meetup finder';
     if (meetups) {
@@ -32,7 +55,8 @@ export default class Top extends React.Component {
     }
     return (
         <div>
-            <AppBar title={heading} style={myStyle} onLeftIconButtonTouchTap={this.handleLeftTap.bind(this)} iconClassNameRight="muidocs-icon-navigation-expand-more" />
+            <this.AppBar title={heading} style={myStyle} onLeftIconButtonTouchTap={this.handleLeftTap.bind(this)} iconClassNameRight="muidocs-icon-navigation-expand-more" />
+            <this.LeftNav docked={false} menuItems={menuItems} ref="theLeftMenu"/>
         </div>
     );
 }
