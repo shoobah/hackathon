@@ -38,6 +38,9 @@ Dispatcher.register((payload) => {
         case Constants.LOGIN:
             theAppState.token = data;
             break;
+        case Constants.POSITION:
+            theAppState.position = data;
+            break;
     }
     _Store.emitChange();
 });

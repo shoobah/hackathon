@@ -12,9 +12,8 @@ export default {
     //         })
     //     })
     // },
-    reactmeetups: (token) => {
-        Api.meetups(token).then((meetups) => {
-            console.info('Getting meetups', meetups)
+    reactmeetups: (token, position) => {
+        Api.meetups(token, position).then((meetups) => {
             Dispatcher.handleAction({
                 type: Constants.FETCH,
                 data: meetups
@@ -25,6 +24,12 @@ export default {
         Dispatcher.handleAction({
             type: Constants.LOGIN,
             data: token
+        });
+    },
+    gotPosition: (position) => {
+        Dispatcher.handleAction({
+            type: Constants.POSITION,
+            data: position
         });
     }
 }

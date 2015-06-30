@@ -13,7 +13,7 @@ export default class Top extends React.Component {
   }
 
   handleLeftTap(e) {
-      Action.reactmeetups(this.props.appstate.token)
+      Action.reactmeetups(this.props.appstate.token, this.props.appstate.position)
   }
 
   render() {
@@ -24,7 +24,11 @@ export default class Top extends React.Component {
     let meetups = this.props.appstate.meetups;
     let heading = 'Meetup finder';
     if (meetups) {
-        heading += ' ' + Moment(meetups.meta.updated).format('LLLL')
+        if (meetups.meta) {
+            heading += ' ' + Moment(meetups.meta.updated).format('LLLL')
+        } else {
+            heading += ' waiting for data'
+        }
     }
     return (
         <div>

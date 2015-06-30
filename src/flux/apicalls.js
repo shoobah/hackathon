@@ -1,9 +1,13 @@
 import q from 'q';
 import $ from 'jquery';
 
-function getContent(token) {
+function getContent(token, position) {
     let deferred = q.defer();
-    let apiUrl = 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon=16.998581&limited_events=False&photo-host=public&page=20&radius=200&lat=60.639107&desc=False&status=upcoming&sig_id=22875111&key=374217665c4e4a61707f4e4be336d4e&access_token=' + token;
+    if (!position) {
+        deferred.reject('FAILED API CALL, NO POSITION');
+        return deferred.promise;
+    }
+    let apiUrl = `https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}&limited_events=False&photo-host=public&page=20&radius=200&desc=False&status=upcoming&sig_id=22875111&key=374217665c4e4a61707f4e4be336d4e&access_token=` + token;
     $.ajax({
             url:apiUrl,
             xhrFields:{
