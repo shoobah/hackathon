@@ -1,7 +1,21 @@
 import q from 'q';
 import $ from 'jquery';
 
-function getContent(token, position) {
+function getLocation() {
+    let _this = this;
+    if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+                console.info('Pos', position.coords.latitude, position.coords.longitude);
+                return position;
+            });
+    } else {
+        console.erro('No geolocation');
+    }
+    return null;
+}
+
+function getContent(token) {
+    let position = getLocation();
     let deferred = q.defer();
     if (!position) {
         deferred.reject('FAILED API CALL, NO POSITION');

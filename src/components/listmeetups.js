@@ -7,6 +7,7 @@ export default class ListMeetups extends React.Component {
   }
 
   render() {
+      console.log('this.props', this.props);
       let appstate = this.props.appstate;
       let meetups = appstate.meetups;
       let position = appstate.position;
