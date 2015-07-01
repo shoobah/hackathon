@@ -8,7 +8,7 @@ module.exports = {
             './src/app.js'
         ],
     },
-    devtool: 'eval',
+    devtool: 'source-map',
     output: {
         path: path.resolve('./prod'),
         library: '[name]',
@@ -36,7 +36,7 @@ module.exports = {
             test: /\.css$/,
             loader: 'style!css'
         }, {
-            test: /\.(jpe?g|png|gif|svg)$/i,
+            test: /\.(jpe?g|png|svg)$/i,
             loaders: [
                 'file?name=/Assets/calendar/images/[name].[ext]',
                 'image?optimizationLevel=7&interlaced=false']
@@ -47,7 +47,7 @@ module.exports = {
             test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: 'url-loader?limit=10000&minetype=application/font-woff&name=[name].[ext]'
         }, {
-            test: /\.(ttf|eot|svg|config)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+            test: /\.(ttf|eot|svg|config|gif)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: 'file-loader?name=[name].[ext]'
         }]
     },

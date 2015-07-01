@@ -13,8 +13,20 @@ export default class Top extends React.Component {
       this.MenuItem = Mui.MenuItem;
   }
 
+  handleMenuChange(e, selectedIndex, menuItem) {
+      console.info(e);
+      console.log('selectedIndex', selectedIndex);
+      console.log('menuItem', menuItem);
+      if (menuItem.action) {
+          switch (menuItem.action){
+              case 'reactmeetups':
+                  Action.reactmeetups(this.props.appstate.token, this.props.appstate.position)
+                  break;
+          }
+      }
+  }
+
   handleLeftTap(e) {
-      //Action.reactmeetups(this.props.appstate.token, this.props.appstate.position);
       this.refs.theLeftMenu.toggle();
   }
 
@@ -24,7 +36,7 @@ export default class Top extends React.Component {
         height: '64px'
     }
     let menuItems = [
-        {route: 'get-started', text: 'Get Started'},
+        {action: 'reactmeetups', text: 'Load meetups'},
         {route: 'customization', text: 'Customization'},
         {route: 'components', text: 'Components'},
         {type: this.MenuItem.Types.SUBHEADER, text: 'Resources'},
@@ -56,7 +68,7 @@ export default class Top extends React.Component {
     return (
         <div>
             <this.AppBar title={heading} style={myStyle} onLeftIconButtonTouchTap={this.handleLeftTap.bind(this)} iconClassNameRight="muidocs-icon-navigation-expand-more" />
-            <this.LeftNav docked={false} menuItems={menuItems} ref="theLeftMenu"/>
+            <this.LeftNav docked={false} menuItems={menuItems} ref="theLeftMenu" onChange={this.handleMenuChange.bind(this)}/>
         </div>
     );
 }

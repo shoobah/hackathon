@@ -4,10 +4,11 @@ import tapPlugin from 'react-tap-event-plugin';
 
 tapPlugin();
 
+
 class App extends React.Component {
     render() {
         return (
-            <div>
+            <div style={{fontFamily:'Roboto, sans-serif'}}>
                 <MeetupApp />
             </div>
         );

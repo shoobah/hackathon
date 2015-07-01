@@ -48,20 +48,8 @@ export default class MeetupApp extends React.Component {
         Action.savetoken(token);
     }
 
-    getLocation() {
-        let _this = this;
-        if ('geolocation' in navigator) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                console.info('Pos', position.coords.latitude, position.coords.longitude);
-                Action.gotPosition(position)
-            });
-        } else {
-            console.erro('No geolocation');
-        }
-    }
 
     componentDidMount() {
-        this.getLocation();
         this.authorizeWithMeetup();
 
         Store.addChangeListener(this._onChange.bind(this));
