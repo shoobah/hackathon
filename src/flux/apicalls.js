@@ -30,13 +30,13 @@ function getContent(token) {
                 withCredentials: true
             }
         })
-         .done(function(data) {
-             deferred.resolve(data);
-         })
-         .fail(function(msg) {
-             console.error('msg', msg);
-             deferred.reject('ERROR:' + msg);
-         });
+        .done(function(data) {
+            deferred.resolve(data);
+        })
+        .fail(function(msg) {
+            console.error('msg', msg);
+            deferred.reject('ERROR:' + msg);
+        });
     });
     return deferred.promise;
 };
