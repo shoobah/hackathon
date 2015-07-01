@@ -12,6 +12,7 @@ ThemeManager.setTheme(Theme);
 export default class MeetupApp extends React.Component {
     constructor(props) {
         super(props);
+        this.state = Store.getState();
     }
     getChildContext() {
         return {
@@ -19,7 +20,16 @@ export default class MeetupApp extends React.Component {
       };
     }
 
+    _onChange() {
+        this.setState(Store.getState());
+    }
+
     componentDidMount() {
+        Store.addChangeListener(this._onChange.bind(this));
+    }
+
+    componentWillUnmount() {
+        Store.removeChangeListener(this._onChange.bind(this));
     }
 
     render() {

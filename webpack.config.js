@@ -62,7 +62,8 @@ module.exports = {
         new webpack.NoErrorsPlugin(),
         new webpack.IgnorePlugin(/vertx/),
         new HtmlWebpackPlugin({
-            title: 'Hackathon - RedBadger'
+            title: 'Hackathon - RedBadger',
+            favicon: 'favicon.ico'
         })
     ]
 };

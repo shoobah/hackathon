@@ -15,22 +15,22 @@ export default class Auth extends React.Component {
         return (false);
     }
 
-    authorizeWithMeetup() {
-        let token = this.getQueryVariable('access_token');
-        let key = ''
-        if (/localhost/.test(window.location)) {
-            key = 'cjvko42h31onkda74rp5mjn12f'
-        } else {
-            key = 'drqkn2encvo3m830liuf06utv'
-        }
-        if (!token) {
-            window.location = `https://secure.meetup.com/oauth2/authorize?client_id=${key}&response_type=token&redirect_uri=${window.location}`;
-        }
-        Action.savetoken(token);
-    }
+    // authorizeWithMeetup() {
+    //     let token = this.getQueryVariable('access_token');
+    //     let key = ''
+    //     if (/localhost/.test(window.location)) {
+    //         key = 'cjvko42h31onkda74rp5mjn12f'
+    //     } else {
+    //         key = 'drqkn2encvo3m830liuf06utv'
+    //     }
+    //     if (!token) {
+    //         window.location = `https://secure.meetup.com/oauth2/authorize?client_id=${key}&response_type=token&redirect_uri=${window.location}`;
+    //     }
+    //     Action.savetoken(token);
+    // }
 
     componentDidMount() {
-        this.authorizeWithMeetup();
+        //this.authorizeWithMeetup();
     }
 
 render() {

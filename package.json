@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "gulp"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   "homepage": "https://github.com/shoobah/hackathon#readme",
   "dependencies": {
     "flux": "^2.0.3",
+    "invariant": "^2.1.0",
     "jquery": "^2.1.4",
     "material-ui": "^0.9.2",
     "moment": "^2.10.3",
