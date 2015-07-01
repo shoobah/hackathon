@@ -23,13 +23,14 @@ export default class ListMeetups extends React.Component {
               </div>
             )
       }
+      //- {item.venue || item.venue.address_1 ? item.venue.address_1 : 'n/a'}, {item.city}
       console.log('ListMeetups - meetups', meetups);
       let items = [];
       for (var item of meetups.results) {
                     console.log('item', item);
           items.push(
                   <ListItem leftIcon={<img src={EventIcon} />} key={item.id}>
-                    {item.name} - {item.venue || item.venue.address_1 ? item.venue.address_1 : 'n/a'}, {item.city}
+                    {item.name}
                   </ListItem>
               );
       };
