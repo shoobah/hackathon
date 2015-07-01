@@ -57,10 +57,10 @@ export default class Top extends React.Component {
         },
     ];
     let meetups = this.props.appstate.meetups;
-    let heading = 'Meetup finder';
+    let heading = 'Meetups within 200km of your position';
     if (meetups) {
         if (meetups.meta) {
-            heading += ' ' + Moment(meetups.meta.updated).format('LLLL')
+            heading += ' ' + Moment(meetups.meta.updated).format('YYYY-MM-DD')
         } else {
             heading += ' waiting for data'
         }

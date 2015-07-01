@@ -14,6 +14,7 @@ function getLocation() {
     return deferred.promise;
 };
 
+//TODO: Renew with meetup after 3500min
 function getContent(token) {
     let deferred = q.defer();
     let position = getLocation().then(function(position) {

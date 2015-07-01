@@ -2,6 +2,7 @@ import React from 'react';
 import Action from '../flux/actions'
 import Mui from 'material-ui';
 import WaitingGif from '../images/Mickey_Waiting_by_mariomaster88.gif'
+import EventIcon from '../images/event_icon.gif'
 
 let List = Mui.List;
 let ListItem = Mui.ListItem;
@@ -26,7 +27,9 @@ export default class ListMeetups extends React.Component {
       let items = [];
       for (var item of meetups.results) {
           items.push(
-                  <ListItem key={item.id}>{item.name}</ListItem>
+                  <ListItem leftIcon={<img src={EventIcon} />} key={item.id}>
+                    {item.name} - {item.venue.address_1}, {item.venue.city}
+                  </ListItem>
               );
       };
       return (
