@@ -38,11 +38,10 @@ class App extends React.Component {
     }
 
     render() {
-        console.log('...state', ...state);
         return (
             <div>
                 <Top appstate={this.state}/>
-                <RouteHandler {...state} appstate={this.state}/>
+                <RouteHandler state={...state} props={...props}/>
             </div>
         );
     }
