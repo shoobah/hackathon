@@ -7,7 +7,7 @@ tapPlugin();
 class App extends React.Component {
     render() {
         return (
-            <div style={{fontFamily:'Roboto, sans-serif'}}>
+            <div style={{fontFamily: 'Roboto, sans-serif'}}>
                 <MeetupApp />
             </div>
         );

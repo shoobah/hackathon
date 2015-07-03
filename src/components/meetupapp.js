@@ -4,10 +4,10 @@ import Action from '../flux/actions';
 import Theme from '../style/htheme';
 import Mui from 'material-ui';
 import Top from './top';
-import MeetupApp from './meetupapp';
+import ListMeetups from './listmeetups';
 import Radium from 'radium';
 
-let ThemeManager = new Mui.Styles.ThemeManager();
+const ThemeManager = new Mui.Styles.ThemeManager();
 ThemeManager.setTheme(Theme);
 
 // @Radium
@@ -39,7 +39,7 @@ export default class MeetupApp extends React.Component {
     }
 
     authorizeWithMeetup() {
-        let token = this.getQueryVariable('access_token');
+        const token = this.getQueryVariable('access_token');
         let key = '';
         if (/localhost/.test(window.location)) {
             key = 'cjvko42h31onkda74rp5mjn12f';
