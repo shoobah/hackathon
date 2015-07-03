@@ -1,14 +1,16 @@
 import React from 'react';
-import Store from '../flux/store'
-import Action from '../flux/actions'
-import Top from './top'
-import ListMeetups from './listmeetups'
+import Store from '../flux/store';
+import Action from '../flux/actions';
 import Theme from '../style/htheme';
 import Mui from 'material-ui';
+import Top from './top';
+import MeetupApp from './meetupapp';
+import Radium from 'radium';
 
 let ThemeManager = new Mui.Styles.ThemeManager();
 ThemeManager.setTheme(Theme);
 
+// @Radium
 export default class MeetupApp extends React.Component {
     constructor(props) {
         super(props);
@@ -20,7 +22,7 @@ export default class MeetupApp extends React.Component {
       };
     }
 
-    _onChange() {
+    onChange() {
         this.setState(Store.getState());
     }
 
@@ -29,18 +31,20 @@ export default class MeetupApp extends React.Component {
         var vars = query.split('&');
         for (var i = 0; i < vars.length; i++) {
             var pair = vars[i].split('=');
-            if (pair[0] == variable) {return pair[1];}
+            if (pair[0] === variable) {
+                return pair[1];
+            }
         }
         return (false);
     }
 
     authorizeWithMeetup() {
         let token = this.getQueryVariable('access_token');
-        let key = ''
+        let key = '';
         if (/localhost/.test(window.location)) {
-            key = 'cjvko42h31onkda74rp5mjn12f'
+            key = 'cjvko42h31onkda74rp5mjn12f';
         } else {
-            key = 'drqkn2encvo3m830liuf06utv'
+            key = 'drqkn2encvo3m830liuf06utv';
         }
         if (!token) {
             window.location = `https://secure.meetup.com/oauth2/authorize?client_id=${key}&response_type=token&redirect_uri=${window.location}`;
@@ -52,11 +56,11 @@ export default class MeetupApp extends React.Component {
     componentDidMount() {
         this.authorizeWithMeetup();
 
-        Store.addChangeListener(this._onChange.bind(this));
+        Store.addChangeListener(this.onChange.bind(this));
     }
 
     componentWillUnmount() {
-        Store.removeChangeListener(this._onChange.bind(this));
+        Store.removeChangeListener(this.onChange.bind(this));
     }
 
     render() {
@@ -67,7 +71,7 @@ export default class MeetupApp extends React.Component {
           </div>
         );
     }
-};
+}
 
 MeetupApp.childContextTypes = {
     muiTheme: React.PropTypes.object

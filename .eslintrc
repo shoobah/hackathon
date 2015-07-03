@@ -1,0 +1,18 @@
+{
+    "parser": "babel-eslint",
+    "ecmaFeatures": {
+        "jsx": true
+    },
+    "rules": {
+        "no-console": 2,
+        "strict": 0,
+        "quotes": [2, "single"],
+        "key-spacing": 0,
+        "prefer-const": 2
+    },
+    "globals" : {
+        "window": "true",
+        "require": "true",
+        "module": "true"
+    }
+}

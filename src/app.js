@@ -1,9 +1,8 @@
-import React     from  'react';
-import MeetupApp from  './components/meetupapp';
+import React from 'react';
 import tapPlugin from 'react-tap-event-plugin';
+import MeetupApp from './components/meetupapp';
 
 tapPlugin();
-
 
 class App extends React.Component {
     render() {

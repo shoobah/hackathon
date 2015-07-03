@@ -1,16 +1,14 @@
 import React from 'react';
-import Action from '../flux/actions'
-import Mui from 'material-ui';
-import WaitingGif from '../images/Mickey_Waiting_by_mariomaster88.gif'
-import EventIcon from '../images/event_icon.gif'
-
-let List = Mui.List;
-let ListItem = Mui.ListItem;
-let ActionInfo = Mui.ActionInfo;
+import WaitingGif from '../images/Mickey_Waiting_by_mariomaster88.gif';
+import EventIcon from '../images/event_icon.gif';
 
 export default class ListMeetups extends React.Component {
   constructor(props) {
       super(props);
+  }
+
+  listItemClick(e) {
+      console.info('click', e);
   }
 
   render() {
@@ -21,19 +19,20 @@ export default class ListMeetups extends React.Component {
               <div>
                 <img src={WaitingGif} />
               </div>
-            )
+            );
       }
       //- {item.venue || item.venue.address_1 ? item.venue.address_1 : 'n/a'}, {item.city}
-      console.log('ListMeetups - meetups', meetups);
       let items = [];
       for (var item of meetups.results) {
-                    console.log('item', item);
           items.push(
-                  <ListItem leftIcon={<img src={EventIcon} />} key={item.id}>
-                    {item.name}
-                  </ListItem>
-              );
-      };
+              <ListItem
+                  leftIcon={<img src={EventIcon}
+                  onClick={this.listItemClick.bind(this)}/>}
+                  key={item.id}>
+                  {item.name}
+              </ListItem>
+          );
+      }
       return (
         <div>
           <List style={{listStyle: 'none'}}>

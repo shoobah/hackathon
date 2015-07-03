@@ -6,13 +6,13 @@ module.exports = {
     entry: {
         app: [
             './src/app.js'
-        ],
+        ]
     },
     devtool: 'source-map',
     output: {
         path: path.resolve('./prod'),
         library: '[name]',
-        filename: '[name].js',
+        filename: '[name].js'
     },
 
     //Här ställer man in vilka filtyper webpack ska göra något med. Loaders installeras via npm
@@ -22,7 +22,10 @@ module.exports = {
         loaders: [{
             test: /\.(jsx|js)$/,
             exclude: /node_modules/,
-            loader: 'babel-loader'
+            loader: 'babel-loader',
+            query: {
+                optional: ['es7.decorators']
+            }
         }, {
             test: /(globalize|cldr-data)/,
             loader: 'imports?define=>false'

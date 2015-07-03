@@ -1,9 +1,9 @@
 import React from 'react';
 import Mui from 'material-ui';
-import Action from '../flux/actions'
-import Moment from 'moment';
+import Action from '../flux/actions';
+import moment from 'moment';
 
-Moment.locale('sv');
+moment.locale('sv');
 
 export default class Top extends React.Component {
   constructor(props) {
@@ -14,27 +14,24 @@ export default class Top extends React.Component {
   }
 
   handleMenuChange(e, selectedIndex, menuItem) {
-      console.info(e);
-      console.log('selectedIndex', selectedIndex);
-      console.log('menuItem', menuItem);
       if (menuItem.action) {
           switch (menuItem.action){
               case 'reactmeetups':
-                  Action.reactmeetups(this.props.appstate.token, this.props.appstate.position)
+                  Action.reactmeetups(this.props.appstate.token, this.props.appstate.position);
                   break;
           }
       }
   }
 
-  handleLeftTap(e) {
+  handleLeftTap() {
       this.refs.theLeftMenu.toggle();
   }
 
   render() {
     let myStyle = {
-        width:'100%',
-        height: '64px'
-    }
+        width  : '100%',
+        height : '64px'
+    };
     let menuItems = [
         {action: 'reactmeetups', text: 'Load meetups'},
         {route: 'customization', text: 'Customization'},
@@ -54,15 +51,15 @@ export default class Top extends React.Component {
             payload  : 'https://www.google.com',
             text     : 'Disabled Link',
             disabled : true
-        },
+        }
     ];
     let meetups = this.props.appstate.meetups;
     let heading = 'Meetups within 200km of your position';
     if (meetups) {
         if (meetups.meta) {
-            heading += ' ' + Moment(meetups.meta.updated).format('YYYY-MM-DD')
+            heading += ' ' + moment(meetups.meta.updated).format('YYYY-MM-DD');
         } else {
-            heading += ' waiting for data'
+            heading += ' waiting for data';
         }
     }
     return (

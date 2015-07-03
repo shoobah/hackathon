@@ -8,14 +8,14 @@ module.exports = {
             'webpack-dev-server/client?http://localhost:8090',
             'webpack/hot/dev-server',
             './src/app.js'
-        ],
+        ]
     },
     devtool: 'source-map',
     //Lägg saker default i dist mappen, döp rot js till app.js och se till att sökvägar i genererad kod läggs under ./
     output: {
         path: path.resolve('./dist'),
         library: '[name]',
-        filename: '[name].js',
+        filename: '[name].js'
     },
     externals:{},
     //Här ställer man in vilka filtyper webpack ska göra något med. Loaders installeras via npm
@@ -25,7 +25,7 @@ module.exports = {
         loaders: [{
             test: /\.(jsx|js)$/,
             exclude: /node_modules/,
-            loaders: ['react-hot', 'babel-loader']
+            loaders: ['react-hot', 'babel-loader?optional[]=es7.decorators']
         }, {
             test: /\.(scss|sass)$/,
             loader: 'style!css!sass'
